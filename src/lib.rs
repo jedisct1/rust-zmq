@@ -739,7 +739,7 @@ pub fn poll<'a>(items: &mut [PollItem], timeout: i64) -> Result<int, Error> {
         let rc = zmq_sys::zmq_poll(
             items.as_mut_ptr() as *mut zmq_sys::zmq_pollitem_t,
             items.len() as c_int,
-            timeout);
+            timeout as c_int);
 
         if rc == -1i32 {
             Err(errno_to_error())
